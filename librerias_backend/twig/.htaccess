@@ -1,0 +1,45 @@
+<IfModule mod_rewrite.c>
+#protege los .htaccess, .htpasswd, .ini, .log
+<FilesMatch "\.(htaccess|htpasswd|ini|log)$"> 
+  Order Allow,Deny 
+  Deny from all 
+</FilesMatch>
+Options +FollowSymLinks
+Options All -Indexes
+
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript text/css application/x-javascript application/xml application/xhtml+xml application/rss+xml
+<Files *.css>
+SetOutputFilter DEFLATE
+</Files>
+<Files *.js>
+SetOutputFilter DEFLATE
+</Files>
+IndexIgnore *
+
+RewriteEngine on
+RewriteBase / 
+RewriteCond %{HTTP_HOST} ^abcjuridico$ [NC]
+RewriteRule ^(.*)$ http://www.abcjuridico/$1 [L,R=301]
+
+RewriteRule ^nosotros/([0-9]+) nosotros.php?id=$1
+RewriteRule ^catalogo/([a-zA-Z0-9_-]+)/([0-9_-]+) catalogo.php?idcateg=$2
+
+#RewriteRule ^productos/([a-zA-Z0-9_-]+)/([0-9_-]+) productos.php?idrutlin=$2
+#RewriteRule ^noticia-evento/([a-zA-Z0-9_-]+) noticia_evento.php?nombnot=$1
+#RewriteRule ^list_noti_event.php/pag([0-9]+) list_noti_event.php?pag=$1
+
+DirectoryIndex index.html index.htm index.php
+
+#RewriteCond %{SCRIPT_FILENAME} !-d
+#RewriteCond %{SCRIPT_FILENAME} !-f
+#RewriteRule . /index.php [L]
+
+RewriteCond %{HTTP_REFERER} (sex) [NC,OR]
+RewriteCond %{HTTP_REFERER} (drugs) [NC,OR]
+RewriteCond %{HTTP_REFERER} (rock\&roll) [NC]
+RewriteRule . /index.php [L]
+
+RewriteCond %{HTTP_REFERER} !^http://(.+\.)?abcjuridico/ [NC]
+RewriteCond %{HTTP_REFERER} !^https://(.+\.)?abcjuridico/ [NC]
+RewriteCond %{HTTP_REFERER} !^$
+RewriteRule .*\.(jpe?g|gif|bmp|png|pdf|doc|xls|rtf|docx|xlsx|flv|mp3|swf)$ - [F]

@@ -1,0 +1,4 @@
+2020-01-04 11:21:am Codigo: 23000  Descripcion: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'SERIES' for key 'categoria' Archivo: /var/www/html/mbox_iptv/modelo/Utilidades.php Linea: 1824
+2020-01-10 05:21:pm Codigo: 23000  Descripcion: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '866218031558324' for key 'sn' Archivo: /var/www/html/mbox_iptv/modelo/Utilidades.php Linea: 1136
+2020-01-10 05:49:pm Codigo: 42S22  Descripcion: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'definicio' in 'field list' Archivo: /var/www/html/mbox_iptv/modelo/Utilidades.php Linea: 2221
+2020-01-10 05:54:pm Codigo: 21S01  Descripcion: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 Archivo: /var/www/html/mbox_iptv/modelo/Utilidades.php Linea: 2221
